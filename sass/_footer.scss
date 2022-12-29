@@ -1,40 +1,11 @@
 footer{
     background-color: #072146;
     color: #fff;
-    grid-area: footer;
-    @include tablet{
-        .ubicacion{
-            grid-area: mapa;
-        }
-        .contactData{
-            grid-area: contacto;
-        }
-        .redes{
-            grid-area: redes;
-        }
-        display: grid;
-        grid-template-areas:
-        "mapa   contacto"
-        "cpi    redes";
-        grid-template-columns: 55% 44%;
-        align-items: center;
-    }
-    @include desktop{
-        grid-template-areas:
-        "null   mapa   contacto"
-        "redes  redes  redes";
-        grid-template-columns: 1fr 1fr 1fr;
-        align-items: center;
-    }
     .ubicacion{
         text-align: center;
-        img{
+        iframe{
             margin: 15px 0 15px;
             width: 90%;
-            @include desktop{
-                height: 180px;
-                width: auto;
-            }
         }
     }
     .contactData{
@@ -68,13 +39,52 @@ footer{
         flex-direction: row;
         justify-content: space-evenly;
         margin-top: 15px;
-        @include smartphone{
-            justify-content: center;
-        }
         img{
             width: 40px;
-            @include smartphone{
+        }
+    }
+}
+
+@media(min-width:500px){
+    footer{
+        .redes{
+            justify-content: center;
+            img{
                 margin: 0px 15px;
+            }
+        }
+    }
+}
+@media(min-width: 768px){
+    footer{
+        .ubicacion{
+            grid-area: mapa;
+        }
+        .contactData{
+            grid-area: contacto;
+        }
+        .redes{
+            grid-area: redes;
+        }
+        display: grid;
+        grid-template-areas:
+        "mapa   contacto"
+        "cpi    redes";
+        grid-template-columns: 55% 44%;
+        align-items: center;
+    }
+}
+@media(min-width:1024px){
+    footer{
+        grid-template-areas:
+        "null   mapa   contacto"
+        "redes  redes  redes";
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        .ubicacion{
+            iframe{
+                height: 180px;
+                width: auto;
             }
         }
     }

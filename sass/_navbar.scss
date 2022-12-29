@@ -1,3 +1,9 @@
+@mixin header{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 0;
+    line-height: 1.6rem;
+}
 nav{
     height: 80px;
     color: #fff;
@@ -8,18 +14,22 @@ nav{
         width: 90%;
         margin: 0 auto;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-end;
         a{
             h1{
                 font-size: 3em;
                 font-weight: 900;
-                color: #fff;
+                @include header;
+            }
+            h3{
+                font-size: 14px;
+                @include header;
             }
         }
         .navLabel{
             display: block;
             cursor: pointer;
-            @include tablet{display: none;}
+            padding-bottom: 10px;
         }
         .navInput{
             display: none;
@@ -41,7 +51,20 @@ nav{
             align-items: center;
             clip-path: circle(0 at center);
             transition: clip-path .5s ease-in-out;
-            @include tablet{
+            .navItem{
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+    }
+}
+@media(min-width: 768px) {
+    nav{
+        .navContainer{
+            .navLabel{
+                display: none;
+            }
+            .navMenu{
                 display: grid;
                 grid-auto-flow: column;
                 justify-content: end;
@@ -50,12 +73,8 @@ nav{
                 background-color: #072146;
                 transition: none;
                 clip-path: none;
-                top: 0;        
-            }
-            .navItem{
-                color: #fff;
-                text-decoration: none;
-                @include tablet{
+                top: 0;
+                .navItem{
                     --clippy: polygon(0 0, 0 0, 0 100%, 0 100%);
                     &::after{
                         content: "";
